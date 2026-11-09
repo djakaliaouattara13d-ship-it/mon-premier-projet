@@ -1,59 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<title>Djakalia - Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OUATTARA Gouantoumi Djakalia – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-body { font-family: Arial; margin: 0; background: #f2f2f2; text-align: center; }
-header { background: #1a73e8; color: white; padding: 50px 20px; }
-header h1 { font-size: 40px; margin: 0; }
-header p { font-size: 20px; }
-.boite { background: white; margin: 20px; padding: 25px; border-radius: 15px; }
-h2 { color: #1a73e8; }
-.projet { background: #e8f0fe; padding: 15px; border-radius: 10px; margin: 10px; }
-.bouton { background: #1a73e8; color: white; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; margin: 5px; }
-.bouton-blanc { background: white; color: #1a73e8; padding: 12px 25px; border-radius: 30px; text-decoration: none; display: inline-block; font-weight: bold; margin: 5px; }
+:root{--bg:#F5F7FA;--surface:#FFFFFF;--ink:#0E2238;--muted:#52627A;--line:#D5DDE8;--accent:#E8890C;--accent-ink:#1A1100;--ok:#1B7F5C;--warn:#B3261E;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1624;--surface:#132338;--ink:#EAF0F7;--muted:#9AABC1;--line:#25384F;--accent:#F5A63A;--accent-ink:#1A1100;--ok:#4CC9A0;--warn:#FF8A80}}
+:root[data-theme="dark"]{--bg:#0B1624;--surface:#132338;--ink:#EAF0F7;--muted:#9AABC1;--line:#25384F;--accent:#F5A63A;--accent-ink:#1A1100;--ok:#4CC9A0;--warn:#FF8A80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+section{padding:3.5rem 0}
+h2{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:800;margin-bottom:.6rem}
+.lead{color:var(--muted);max-width:38rem;margin:0 0 1.75rem}
+header.hero{padding:3rem 0 2rem}
+.hero h1{font-size:clamp(2.3rem,8.5vw,4.8rem);font-weight:800;letter-spacing:-.03em;max-width:15ch}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:34rem;margin:1.2rem 0 1.6rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.8rem 1.3rem;border-radius:.6rem;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.main{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+/* Démo stock */
+.demo{background:var(--surface);border:2px solid var(--ink);border-radius:1rem;padding:1.25rem;box-shadow:6px 6px 0 var(--accent)}
+.demo-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;align-items:baseline;margin-bottom:.75rem}
+.demo-top h3{font-size:1.3rem}
+.stat{font-size:.95rem;color:var(--muted)}
+.stat b{color:var(--warn)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:30rem}
+th,td{text-align:left;padding:.6rem .5rem;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--muted);font-size:.9rem}
+.q{display:inline-flex;align-items:center;gap:.5rem}
+.q button{width:2.2rem;height:2.2rem;border-radius:.5rem;border:1.5px solid var(--ink);background:var(--bg);color:var(--ink);font-size:1.2rem;cursor:pointer}
+.q span{min-width:2rem;text-align:center;font-weight:600}
+.tag{font-size:.85rem;font-weight:600;padding:.15rem .55rem;border-radius:2rem;border:1.5px solid}
+.tag.ok{color:var(--ok)}.tag.low{color:var(--warn)}
+.add{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.add input{flex:1 1 9rem;padding:.65rem .8rem;border-radius:.5rem;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.add select{padding:.65rem .8rem;border-radius:.5rem;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.add button{padding:.65rem 1.1rem;border-radius:.5rem;border:0;background:var(--ink);color:var(--bg);font:600 1rem inherit;cursor:pointer}
+.sym{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr))}
+.sym label{display:flex;gap:.5rem;align-items:center;padding:.55rem .7rem;border:1.5px solid var(--line);border-radius:.5rem;background:var(--bg);cursor:pointer}
+.sym input{width:1.2rem;height:1.2rem;accent-color:var(--accent)}
+.sym label.red{border-color:var(--warn)}
+.res{margin-top:1rem}
+.res .box{border:2px solid var(--ink);border-radius:.75rem;padding:1rem;margin-bottom:.75rem}
+.res .box.urg{border-color:var(--warn)}
+.res h3{font-size:1.3rem;margin-bottom:.4rem}
+.res p{margin:.3rem 0}
+/* Projets */
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:.75rem;padding:1.25rem}
+.card h3{font-size:1.25rem;margin-bottom:.4rem}
+.card p{margin:.3rem 0 .8rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0;margin:0;list-style:none}
+.chips li{font-size:.85rem;padding:.15rem .6rem;border:1.5px solid var(--line);border-radius:2rem}
+/* Parcours */
+.tl{border-left:3px solid var(--accent);margin:0;padding:0 0 0 1.25rem;list-style:none}
+.tl li{margin-bottom:1.4rem}
+.tl b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:1.2rem}
+.tl span{color:var(--muted)}
+.skills{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
+.skills h3{font-size:1.1rem;margin-bottom:.5rem}
+footer{border-top:1.5px solid var(--line);padding:2.5rem 0 3rem}
+footer h2{margin-bottom:1rem}
+small{color:var(--muted)}
+button.btn{background:transparent;color:var(--ink);font:600 1rem "Instrument Sans",system-ui,sans-serif;cursor:pointer}
+@media print{header.hero,#demo,#projets,#parcours,#refs,footer,#sante .sym,#sante .add,#sante .btns{display:none!important}body{background:#fff;color:#000}.demo{box-shadow:none}}
+@media (prefers-reduced-motion:no-preference){.hero h1{animation:in .7s ease-out both}@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}}
 </style>
 </head>
 <body>
+<header class="hero"><div class="wrap">
+<h1>OUATTARA Gouantoumi Djakalia</h1>
+<p>Titulaire d’un BTS IDA, en Licence 3 Génie Logiciel (GL). Je conçois des logiciels simples et utiles pour gérer des stocks, des données, la santé et les activités du quotidien.</p>
+<div class="btns"><a class="btn main" href="#demo">Essayer ma démo de stock</a><a class="btn" href="#sante">Projet santé</a><a class="btn" href="#contact">Me contacter</a></div>
+</div></header>
 
-<header>
-<h1>Djakalia Ouattara 👋</h1>
-<p>Développeur Web débutant | Abidjan, Côte d'Ivoire</p>
-<p>djakaliaouattara13d@gmail.com</p>
-<a class="bouton-blanc" href="mailto:djakaliaouattara13d@gmail.com">M'envoyer un Email</a>
-<a class="bouton-blanc" href="https://wa.me/2250151475547">WhatsApp</a>
-</header>
-
-<div class="boite">
-<h2>À propos de moi</h2>
-<p>Bonjour, je suis Djakalia. J'apprends à créer des sites internet avec HTML et CSS. C'est mon premier portfolio.</p>
-</div>
-
-<div class="boite">
-<h2>Mes compétences</h2>
-<p>✅ HTML<br>✅ CSS<br>✅ GitHub<br>✅ En train d'apprendre JavaScript</p>
-</div>
-
-<div class="boite">
-<h2>Mes projets</h2>
-<div class="projet">
-<h3>Mon premier site</h3>
-<p>Mon premier site créé sur GitHub Pages.</p>
-</div>
-<div class="projet">
-<h3>Mon portfolio</h3>
-<p>Ce site que tu es en train de voir.</p>
+<section id="demo"><div class="wrap">
+<h2>Une gestion de stock que vous pouvez toucher</h2>
+<p class="lead">Voici un mini outil de stock. Changez les quantités, ajoutez un produit : l’alerte apparaît dès que le stock est bas.</p>
+<div class="demo">
+<div class="demo-top"><h3>Stock de la boutique</h3><div class="stat" id="stat"></div></div>
+<div class="tw"><table><thead><tr><th>Produit</th><th>Quantité</th><th>Prix (FCFA)</th><th>État</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="add">
+<input id="n" placeholder="Nom du produit" aria-label="Nom du produit">
+<input id="qt" type="number" min="0" placeholder="Quantité" aria-label="Quantité">
+<input id="p" type="number" min="0" placeholder="Prix" aria-label="Prix en FCFA">
+<button id="go" type="button">Ajouter</button>
 </div>
 </div>
+</div></section>
 
-<div class="boite">
-<h2>Me contacter</h2>
-<p>Tu veux travailler avec moi ? Écris-moi !</p>
-<p><b>Email :</b> djakaliaouattara13d@gmail.com</p>
-<a class="bouton" href="mailto:djakaliaouattara13d@gmail.com">Envoyer un Email</a>
+<section id="sante"><div class="wrap">
+<h2>Projet santé : température et symptômes</h2>
+<p class="lead">Entre ta température et coche ce que tu ressens. L’outil donne la maladie la plus probable. Ce n’est pas un diagnostic : va à l’hôpital pour confirmer.</p>
+<div class="demo">
+<div class="add" style="margin:0 0 1rem"><input id="tp" type="number" step="0.1" min="30" max="45" placeholder="Température en °C" aria-label="Température en degrés Celsius"></div>
+<div class="add" style="margin:0 0 1rem"><label for="ag" style="align-self:center">Âge</label><select id="ag"><option value="a">Moins de 5 ans</option><option value="b">5 à 17 ans</option><option value="c" selected>18 à 59 ans</option><option value="d">60 ans et plus</option></select><label for="si" style="align-self:center">Situation</label><select id="si"><option value="n">Aucune particulière</option><option value="g">Enceinte</option><option value="c">Maladie chronique (drépanocytose, diabète, VIH…)</option></select></div>
+<div class="sym" id="sym"></div>
+<div class="add"><label for="du" style="align-self:center">Depuis combien de temps ?</label><select id="du"><option value="a">Moins de 2 jours</option><option value="b">2 à 7 jours</option><option value="c">1 à 3 semaines</option><option value="d">Plus de 3 semaines</option></select></div>
+<div class="add"><button id="chk" type="button">Voir le résultat</button></div>
+<div class="res" id="res" role="status" aria-live="polite"></div>
+<p><small>Outil d’orientation créé dans le cadre de mes études. Il ne remplace pas un médecin et ne garde aucune de tes données.</small></p>
+<div class="btns" style="margin-top:1rem"><button class="btn" id="pr" type="button">Imprimer mon résultat</button><a class="btn" href="https://www.google.com/maps/search/h%C3%B4pital+Abidjan" target="_blank" rel="noopener">Hôpitaux près de moi</a><a class="btn" href="https://www.google.com/maps/search/pharmacie+de+garde+Abidjan" target="_blank" rel="noopener">Pharmacies de garde</a></div>
 </div>
+</div></section>
 
-<p>© 2026 Djakalia Ouattara</p>
+<section id="projets"><div class="wrap">
+<h2>Projets</h2>
+<p class="lead">La gestion de stock et le contrôle de santé fonctionnent en direct sur cette page.</p>
+<div class="grid">
+<article class="card"><h3><a href="#demo">Gestion de stock</a></h3><p>Suivi des entrées, des sorties et des seuils d’alerte pour une petite boutique.</p><ul class="chips"><li>HTML</li><li>JavaScript</li><li>Excel</li></ul></article>
+<article class="card"><h3><a href="#sante">Contrôle de santé</a></h3><p>Prise de température et vérification de symptômes pour orienter vers l’hôpital.</p><ul class="chips"><li>JavaScript</li><li>Logique métier</li></ul></article>
+</div>
+</div></section>
 
+<section id="parcours"><div class="wrap">
+<h2>Parcours et compétences</h2>
+<ul class="tl" style="margin-bottom:2rem">
+<li><b>BTS IDA</b><span>Bases de l’informatique, de la gestion et des données.</span></li>
+<li><b>Licence 3 Génie Logiciel (GL)</b><span>En cours : conception, développement et gestion de projets logiciels.</span></li>
+</ul>
+<div class="skills">
+<div class="card"><h3>Développement</h3><ul class="chips"><li>HTML / CSS</li><li>JavaScript</li><li>Git et GitHub</li><li>VS Code</li><li>Conception UML</li></ul></div>
+<div class="card"><h3>Gestion</h3><ul class="chips"><li>Gestion de stock</li><li>Suivi des ventes</li><li>Tableaux de bord</li></ul></div>
+<div class="card"><h3>Données</h3><ul class="chips"><li>SQL</li><li>Excel</li><li>Modélisation</li></ul></div>
+</div>
+</div></section>
+
+<section id="refs"><div class="wrap">
+<h2>Références</h2>
+<p class="lead">Les conseils du projet santé suivent des recommandations générales de santé publique, notamment celles de l’<a href="https://www.who.int/fr" rel="noopener">Organisation mondiale de la Santé</a> et du ministère de la Santé de Côte d’Ivoire. Ils servent d’orientation et doivent être confirmés par un professionnel de santé. SAMU : 185.</p>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+<h2>Travaillons ensemble</h2>
+<div class="btns"><a class="btn main" href="https://wa.me/2250151475547" rel="noopener">WhatsApp : 01 51 47 55 47</a><a class="btn" href="mailto:djakaliaouattara13d@gmail.com">Écrire un e-mail</a><a class="btn" href="https://github.com/djakaliaouattara13d-ship-it" rel="noopener">Voir mon GitHub</a></div>
+<p><small>© 2026 OUATTARA Gouantoumi Djakalia</small></p>
+</div></footer>
+
+<script>
+var items=[{n:"Riz 25 kg",q:14,p:18000},{n:"Huile 5 L",q:4,p:6500},{n:"Sucre 1 kg",q:30,p:900},{n:"Savon",q:3,p:350}];
+var LOW=5;
+function fmt(x){return x.toLocaleString("fr-FR")}
+function draw(){
+ var tb=document.getElementById("rows");tb.innerHTML="";
+ var low=0,val=0;
+ items.forEach(function(it,i){
+  var isLow=it.q<LOW;if(isLow)low++;val+=it.q*it.p;
+  var tr=document.createElement("tr");
+  tr.innerHTML='<td></td><td><div class="q"><button type="button" aria-label="Retirer un">−</button><span>'+it.q+'</span><button type="button" aria-label="Ajouter un">+</button></div></td><td>'+fmt(it.p)+'</td><td><span class="tag '+(isLow?"low":"ok")+'">'+(isLow?"Stock bas":"OK")+'</span></td>';
+  tr.firstChild.textContent=it.n;
+  var b=tr.querySelectorAll("button");
+  b[0].onclick=function(){if(items[i].q>0){items[i].q--;draw()}};
+  b[1].onclick=function(){items[i].q++;draw()};
+  tb.appendChild(tr);
+ });
+ document.getElementById("stat").innerHTML="Valeur du stock : <b style='color:var(--ink)'>"+fmt(val)+" FCFA</b> · Alertes : <b>"+low+"</b>";
+}
+document.getElementById("go").onclick=function(){
+ var n=document.getElementById("n"),q=document.getElementById("qt"),p=document.getElementById("p");
+ if(!n.value.trim()){n.focus();return}
+ items.push({n:n.value.trim(),q:Math.max(0,parseInt(q.value)||0),p:Math.max(0,parseInt(p.value)||0)});
+ n.value=q.value=p.value="";draw();
+};
+draw();
+var SY=[["fi","Fièvre"],["fr","Frissons"],["mt","Maux de tête"],["co","Courbatures"],["fa","Grande fatigue"],["to","Toux"],["go","Gorge irritée"],["ne","Nez qui coule"],["di","Diarrhée"],["vo","Vomissements"],["da","Douleur au ventre"],["na","Nausées"],["ap","Perte d’appétit"],["ve","Vertiges"],["pa","Pâleur (paumes, yeux, lèvres)"],["es","Essoufflement à l’effort"],["pc","Palpitations"],["ds","Sueurs la nuit"],["pp","Perte de poids"],["ja","Yeux ou peau jaunes"],["ur","Urine foncée"],["dm","Brûlure en urinant"],["uf","Envies fréquentes d’uriner"],["dd","Douleur dans le dos ou les reins"],["dy","Douleur derrière les yeux"],["ar","Douleurs aux articulations"],["ed","Boutons ou rougeurs sur la peau"],["rp","Difficulté à respirer",1],["dt","Douleur à la poitrine",1],["nu","Nuque raide",1],["cv","Convulsions ou confusion",1],["sg","Saignements anormaux",1],["ev","Évanouissement",1]];
+var DZ=[["Paludisme",["fi","fr","mt","co","vo","fa","ds","na"]],["Grippe",["fi","to","co","mt","fa","go"]],["Rhume",["ne","go","to","mt"]],["Gastro-entérite",["di","vo","da","fi","na"]],["Fièvre typhoïde",["fi","da","mt","fa","di","ap","na"]],["Anémie",["fa","pa","ve","es","pc","mt","ap"]],["Dengue",["fi","mt","dy","ar","co","ed","na"]],["Hépatite virale",["fa","ja","ur","na","ap","da"]],["Infection urinaire",["dm","uf","dd","fi"]],["Tuberculose",["to","ds","pp","fa","ap","fi"]]];
+var SIG={"Paludisme":["fr","ds"],"Anémie":["pa","es"],"Dengue":["dy","ed"],"Hépatite virale":["ja","ur"],"Infection urinaire":["dm","uf"],"Tuberculose":["pp","ds"],"Gastro-entérite":["di","vo"],"Fièvre typhoïde":["da","ap"],"Grippe":["to","co"],"Rhume":["ne","go"]};
+var ADV={"Paludisme":"Fais un test de paludisme (TDR ou goutte épaisse) le jour même : soigné tôt, il guérit bien. Dors sous moustiquaire.","Anémie":"Demande une numération sanguine (NFS) pour mesurer ton taux d’hémoglobine. L’anémie a plusieurs causes, dont le paludisme : le médecin cherchera laquelle.","Dengue":"Repose-toi et bois beaucoup. Évite l’aspirine et l’ibuprofène, qui augmentent le risque de saignement. Reviens vite en cas de mal au ventre, de saignements ou de vomissements répétés.","Fièvre typhoïde":"Un test sanguin est nécessaire pour la confirmer. Elle se soigne avec des antibiotiques prescrits par un médecin. Bois de l’eau propre ou traitée.","Hépatite virale":"Un bilan du foie et un test sanguin sont nécessaires. En attendant, évite l’alcool et les médicaments non prescrits.","Infection urinaire":"Un examen des urines (ECBU) permet de confirmer. Bois beaucoup d’eau et ne prends pas d’antibiotiques sans ordonnance.","Tuberculose":"Un examen des crachats et une radio du thorax sont nécessaires. Confirmée, elle se guérit avec un traitement suivi jusqu’au bout.","Gastro-entérite":"Bois des sels de réhydratation orale (SRO) par petites gorgées et lave-toi les mains. Consulte si tu ne peux plus boire ou si tu vois du sang dans les selles.","Grippe":"Repose-toi et bois beaucoup. Consulte si la fièvre dure plus de 3 jours.","Rhume":"Repos et boissons chaudes. Cela passe en général en quelques jours."};
+var sy=document.getElementById("sym");
+SY.forEach(function(s){var l=document.createElement("label");if(s[2])l.className="red";var c=document.createElement("input");c.type="checkbox";c.value=s[0];l.appendChild(c);l.appendChild(document.createTextNode(s[1]));sy.appendChild(l)});
+document.getElementById("chk").onclick=function(){
+ var res=document.getElementById("res");
+ var t=parseFloat(document.getElementById("tp").value);
+ var du=document.getElementById("du").value;
+ var on=[].slice.call(sy.querySelectorAll("input:checked")).map(function(c){return c.value});
+ if(!on.length&&isNaN(t)){res.textContent="Entre ta température ou coche au moins un symptôme.";return}
+ var red=on.some(function(k){return ["rp","dt","nu","cv","sg","ev"].indexOf(k)>-1});
+ var h="",tl="";
+ if(!isNaN(t)){tl=t<35?"Température basse":t<37.5?"Température normale":t<38?"Température légèrement élevée":t<39.5?"Fièvre":"Forte fièvre";if(t>=38&&on.indexOf("fi")<0)on.push("fi")}
+ var r=DZ.map(function(d){var m=d[1].filter(function(k){return on.indexOf(k)>-1}).length;var b=(SIG[d[0]]||[]).some(function(k){return on.indexOf(k)>-1})?1:0;return {n:d[0],m:m,s:(m+b)/(d[1].length+1)}}).filter(function(x){return x.m>=2}).filter(function(x){return x.n!=="Tuberculose"||du==="d"}).sort(function(a,b){return b.s-a.s||b.m-a.m});
+ if(red||t>=39.5||t<35)h+='<div class="box urg"><h3>Va à l’hôpital maintenant</h3><p>Un de tes signes est grave. Ne reste pas seul : rends-toi aux urgences ou appelle le SAMU (185).</p></div>';
+ var ag=document.getElementById("ag").value,si=document.getElementById("si").value;
+ var risk=ag==="a"||ag==="d"||si!=="n";
+ if(risk&&on.indexOf("fi")>-1&&!(red||t>=39.5||t<35))h+='<div class="box urg"><h3>Consulte un médecin aujourd’hui</h3><p>Chez un enfant de moins de 5 ans, une personne de 60 ans et plus, une femme enceinte ou une personne avec une maladie chronique, la fièvre peut devenir grave vite. N’attends pas.</p></div>';
+ if(tl)h+='<p><b>'+tl+'</b> : '+t+' °C</p>';
+ if(r.length){h+='<div class="box"><h3>Maladie la plus probable : '+r[0].n+'</h3><p>Va à l’hôpital pour faire un test et recevoir le bon traitement. Seul un médecin peut confirmer.</p><p><b>Que faire :</b> '+(ADV[r[0].n]||"")+'</p>';if(r.length>1)h+='<p>Autres possibilités : '+r.slice(1).map(function(x){return x.n}).join(", ")+'.</p>';h+='</div>'}
+ else h+='<div class="box"><h3>Aucune maladie ne ressort clairement</h3><p>Coche tous tes symptômes. Si tu te sens mal ou si ça dure plus de 2 jours, va à l’hôpital.</p></div>';
+ if(du==="d"&&on.indexOf("to")>-1)h+='<p>Une toux de plus de 3 semaines doit être examinée à l’hôpital (test de tuberculose).</p>';
+ if(du==="c"||du==="d")h+='<p>Tes symptômes durent depuis longtemps : consulte un médecin même si tu te sens mieux.</p>';
+ if(on.indexOf("fi")>-1)h+='<p>À Abidjan, le paludisme est fréquent : en cas de fièvre, fais un test dans un centre de santé.</p>';
+ res.innerHTML=h;
+};
+document.getElementById("pr").onclick=function(){window.print()};
+</script>
 </body>
 </html>
